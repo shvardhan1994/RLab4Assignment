@@ -1,27 +1,22 @@
 ---
-title: "Lab4Vignette"
-author: "Harshavardhan Subramanian"
-date: "28/09/2019"
+title: "my-vignette"
 output: rmarkdown::html_vignette
-rmarkdown::pdf_vignette
 vignette: >
-  %\VignetteIndexEntry{Lab4Vignette}
+  %\VignetteIndexEntry{my-vignette}
   %\VignetteEngine{knitr::rmarkdown}
   %\VignetteEncoding{UTF-8}
 ---
 
 ```{r, include = FALSE}
-
 knitr::opts_chunk$set(
   collapse = TRUE,
   comment = "#>"
 )
 ```
 
-```{r setup, include=TRUE,cache=FALSE}
+```{r setup}
 library(Lab4Assignment)
 ```
-
 <p> Advanced R Programing Lab 4 assignment aims at creating a linear regression package in R. Basic linear algebra to create the functionality in the R package.
 This package also aims at implementing an object oriented system to handle special functions such as print(), plot(), resid(), pred(), coef() and summary().</p>
 
@@ -48,13 +43,6 @@ This package also aims at implementing an object oriented system to handle speci
 
 <p> Here we are using "iris" data set to calculate linear regression between two fields as an example. The formula argument will be equated to Petal.Length ~ Species and data of iris is passed to data argument.</p>
 
-```{r call linreg,eval=TRUE}
-# Call the function linreg:
-data("iris")
-linreg <- linreg$new(formula = Petal.Length~Sepal.Width+Sepal.Length, data = iris)
-
-```
-
 <p> This creates a RC class which takes in input parameters and initializes the variables defined within the initialize method and calculates the required calculation to find the regression coefficient, expected values, residuals, variance, standarized residuals, variance, t values and pvalues. </p>
 
 <p> As per the objective of the assignment, the methods defined inside the RC class has to be implemented and called using class object. The class object calls the particular method and the expressions within the method is evaluated and returns the desired value as expected by the assignment procedure. 
@@ -63,8 +51,10 @@ Below is the syntax to call the methods using objects : </p>
 ## Initializing the constructor method :
 
 ```{r call initialize,eval=TRUE}
+
 data("iris")
-linreg <- linreg$initialize(formula = Petal.Length~Sepal.Width+Sepal.Length, data=iris)
+linreg <- linreg$new(Petal.Length~Sepal.Width+Sepal.Length, data=iris)
+
 ```
 
 ## Calling other methods :
@@ -72,15 +62,10 @@ linreg <- linreg$initialize(formula = Petal.Length~Sepal.Width+Sepal.Length, dat
 ```{r call implemented methods,eval=TRUE}
 
 linreg$print()
+linreg$plot()
 linreg$resid()
 linreg$pred()
 linreg$coef()
 linreg$summary()
 
-```
-
-## Calling plot method :
-
-```{r plot_method,eval=TRUE}
-linreg$plot()
 ```

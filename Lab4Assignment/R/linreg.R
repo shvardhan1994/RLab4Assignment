@@ -2,8 +2,9 @@
 #' @description This package contains the code for Multiple Regression Model. A linreg function is created which takes two arguments and returns the object with of  RC class linreg.
 #' @param formula,data Takes in two parameters, formula takes an expression of formula data type and data takes an dataframe data type.
 #' @return Returns the object of linreg class.
+#' @import methods
 #' @export linreg
-#' @exportClass linreg
+
 
 linreg <- setRefClass("linreg",
                       fields = list(
@@ -126,8 +127,9 @@ linreg <- setRefClass("linreg",
                             ggplot2::ylab(expression(sqrt(abs("Standardized Residuals")))) +
                             ggplot2::xlab(paste("Fitted Values", "\n\t","lm(", form[1],")"))+
                             ggplot2::stat_summary(fun.y = mean, color = "red", geom = "line", size=1)
-                          
-                          return(gridExtra::grid.arrange(plot1,plot2,nrow=2))
+                            library(gridExtra)
+                            plt_meth <<- gridExtra::grid.arrange(plot1,plot2,nrow=2)
+                          return(plt_meth)
                         },
                         resid = function(){
                           vec_e_cap <- as.vector(e_cap)
