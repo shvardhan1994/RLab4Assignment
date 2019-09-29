@@ -1,0 +1,15 @@
+Package: Lab4Assignment
+Type: Package
+Title: A linear regression package in R
+Version: 1.0
+Date: 2019-09-28
+Author: Harshavardhan Subramanian and Karthikeyan Devarajan
+Maintainer: Harshavardhan Subramanian and Karthikeyan Devarajan <shvardhan1994@gmail.com> <karthi.kumar78@gmail.com>
+Description: This package creates a linreg function which calculates the multiple linear regression model of entered formula and returns a class object of RC class.
+License: MIT + file LICENSE
+Depends: R (>= 2.10)
+RoxygenNote: 6.1.1
+Suggests: 
+    testthat, knitr, rmarkdown
+VignetteBuilder: knitr
+Imports: gridExtra,ggplot2, methods
