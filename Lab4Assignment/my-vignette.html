@@ -334,8 +334,9 @@ The format of formula data type is dependent_variable ~ independent_variables
 Here we are using “iris” data set to calculate linear regression between two fields as an example. The formula argument will be equated to Petal.Length ~ Species and data of iris is passed to data argument.
 </p>
 <div class="sourceCode" id="cb2"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb2-1" title="1"><span class="co"># Call the function linreg:</span></a>
-<a class="sourceLine" id="cb2-2" title="2"></a>
-<a class="sourceLine" id="cb2-3" title="3">lin_obj &lt;-<span class="st"> </span>linreg<span class="op">$</span><span class="kw">new</span>(Petal.Length<span class="op">~</span>Species, <span class="dt">data =</span> iris)</a></code></pre></div>
+<a class="sourceLine" id="cb2-2" title="2"><span class="kw">data</span>(<span class="st">&quot;iris&quot;</span>)</a>
+<a class="sourceLine" id="cb2-3" title="3">linreg &lt;-<span class="st"> </span>linreg<span class="op">$</span><span class="kw">new</span>(<span class="dt">formula =</span> Petal.Length <span class="op">~</span><span class="st"> </span>Species, <span class="dt">data =</span> iris)</a>
+<a class="sourceLine" id="cb2-4" title="4"><span class="co">#&gt; Error in envRefInferField(x, what, getClass(class(x)), selfEnv): &#39;new&#39; is not a valid field or method name for reference class &quot;linreg&quot;</span></a></code></pre></div>
 <p>
 This creates a RC class which takes in input parameters and initializes the variables defined within the initialize method and calculates the required calculation to find the regression coefficient, expected values, residuals, variance, standarized residuals, variance, t values and pvalues.
 </p>
@@ -345,18 +346,18 @@ As per the objective of the assignment, the methods defined inside the RC class 
 </div>
 <div id="initializing-the-constructor-method" class="section level2">
 <h2>Initializing the constructor method :</h2>
-<div class="sourceCode" id="cb3"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb3-1" title="1"></a>
-<a class="sourceLine" id="cb3-2" title="2">lin_obj<span class="op">$</span><span class="kw">initialize</span>()</a></code></pre></div>
+<div class="sourceCode" id="cb3"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb3-1" title="1"><span class="kw">data</span>(<span class="st">&quot;iris&quot;</span>)</a>
+<a class="sourceLine" id="cb3-2" title="2">linreg &lt;-<span class="st"> </span>linreg<span class="op">$</span><span class="kw">new</span>(<span class="dt">formula =</span> Petal.Length<span class="op">~</span>Sepal.Width<span class="op">+</span>Sepal.Length, <span class="dt">data=</span>iris)</a></code></pre></div>
 </div>
 <div id="calling-other-methods" class="section level2">
 <h2>Calling other methods :</h2>
 <div class="sourceCode" id="cb4"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb4-1" title="1"></a>
-<a class="sourceLine" id="cb4-2" title="2">lin_obj<span class="op">$</span><span class="kw">print</span>()</a>
-<a class="sourceLine" id="cb4-3" title="3">lin_obj<span class="op">$</span><span class="kw">plot</span>()</a>
-<a class="sourceLine" id="cb4-4" title="4">lin_obj<span class="op">$</span><span class="kw">resid</span>()</a>
-<a class="sourceLine" id="cb4-5" title="5">lin_obj<span class="op">$</span><span class="kw">pred</span>()</a>
-<a class="sourceLine" id="cb4-6" title="6">lin_obj<span class="op">$</span><span class="kw">coef</span>()</a>
-<a class="sourceLine" id="cb4-7" title="7">lin_obj<span class="op">$</span><span class="kw">summary</span>()</a></code></pre></div>
+<a class="sourceLine" id="cb4-2" title="2">linreg<span class="op">$</span><span class="kw">print</span>()</a>
+<a class="sourceLine" id="cb4-3" title="3">linreg<span class="op">$</span><span class="kw">plot</span>()</a>
+<a class="sourceLine" id="cb4-4" title="4">linreg<span class="op">$</span><span class="kw">resid</span>()</a>
+<a class="sourceLine" id="cb4-5" title="5">linreg<span class="op">$</span><span class="kw">pred</span>()</a>
+<a class="sourceLine" id="cb4-6" title="6">linreg<span class="op">$</span><span class="kw">coef</span>()</a>
+<a class="sourceLine" id="cb4-7" title="7">linreg<span class="op">$</span><span class="kw">summary</span>()</a></code></pre></div>
 </div>
 
 

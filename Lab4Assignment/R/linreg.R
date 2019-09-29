@@ -2,7 +2,8 @@
 #' @description This package contains the code for Multiple Regression Model. A linreg function is created which takes two arguments and returns the object with of  RC class linreg.
 #' @param formula,data Takes in two parameters, formula takes an expression of formula data type and data takes an dataframe data type.
 #' @return Returns the object of linreg class.
-#' @export
+#' @export linreg
+#' @exportClass linreg
 
 linreg <- setRefClass("linreg",
                       fields = list(
@@ -113,7 +114,7 @@ linreg <- setRefClass("linreg",
                         plot = function(){
                           plot1 <<- ggplot2::ggplot(data=data.frame(y_cap,e_cap),
                                                     ggplot2::aes(x= y_cap, y = e_cap)) +
-                            ggplot2::xlab(paste("Fitted Values", "\n\t", form[1])) +
+                            ggplot2::xlab(paste("Fitted Values", "\n\t","lm(", form[1],")")) +
                             ggplot2::ylab("Residuals") + ggplot2::geom_point(shape=1, size=5) + ggplot2::ggtitle("Residuals vs Fitted")+
                             ggplot2::stat_summary(fun.y = median, color = "red", geom = "line", size=1)
                           
@@ -123,7 +124,7 @@ linreg <- setRefClass("linreg",
                             ggplot2::geom_point(shape =1, size=5) +
                             ggplot2::ggtitle("Scale-Location") +
                             ggplot2::ylab(expression(sqrt(abs("Standardized Residuals")))) +
-                            ggplot2::xlab(paste("Fitted Values", "\n\t", form[1]))+
+                            ggplot2::xlab(paste("Fitted Values", "\n\t","lm(", form[1],")"))+
                             ggplot2::stat_summary(fun.y = mean, color = "red", geom = "line", size=1)
                           
                           return(gridExtra::grid.arrange(plot1,plot2,nrow=2))
@@ -170,6 +171,7 @@ linreg <- setRefClass("linreg",
                       ))
 
 #data("iris")
+
 #linreg <- linreg$new(Petal.Length~Sepal.Width+Sepal.Length, data=iris)
 #linreg <- linreg$new(Petal.Length ~ Species, data = iris)
 #linreg$print()

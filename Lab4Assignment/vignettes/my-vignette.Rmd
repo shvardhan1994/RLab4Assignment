@@ -3,6 +3,7 @@ title: "Lab4Vignette"
 author: "Harshavardhan Subramanian"
 date: "28/09/2019"
 output: rmarkdown::html_vignette
+rmarkdown::pdf_vignette
 vignette: >
   %\VignetteIndexEntry{Lab4Vignette}
   %\VignetteEngine{knitr::rmarkdown}
@@ -10,13 +11,14 @@ vignette: >
 ---
 
 ```{r, include = FALSE}
+
 knitr::opts_chunk$set(
   collapse = TRUE,
   comment = "#>"
 )
 ```
 
-```{r setup}
+```{r setup, include=TRUE,cache=FALSE}
 library(Lab4Assignment)
 ```
 
@@ -46,11 +48,10 @@ This package also aims at implementing an object oriented system to handle speci
 
 <p> Here we are using "iris" data set to calculate linear regression between two fields as an example. The formula argument will be equated to Petal.Length ~ Species and data of iris is passed to data argument.</p>
 
-```{r call linreg,eval=FALSE}
+```{r call linreg,eval=TRUE}
 # Call the function linreg:
-
-lin_obj <- linreg$new(Petal.Length~Species, data = iris)
-
+data("iris")
+linreg <- linreg$new(formula = Petal.Length~Sepal.Width+Sepal.Length, data = iris)
 
 ```
 
@@ -61,21 +62,25 @@ Below is the syntax to call the methods using objects : </p>
 
 ## Initializing the constructor method :
 
-```{r call initialize,eval=FALSE}
-
-lin_obj$initialize()
-
+```{r call initialize,eval=TRUE}
+data("iris")
+linreg <- linreg$initialize(formula = Petal.Length~Sepal.Width+Sepal.Length, data=iris)
 ```
 
 ## Calling other methods :
 
-```{r call implemented methods,eval=FALSE}
+```{r call implemented methods,eval=TRUE}
 
-lin_obj$print()
-lin_obj$plot()
-lin_obj$resid()
-lin_obj$pred()
-lin_obj$coef()
-lin_obj$summary()
+linreg$print()
+linreg$resid()
+linreg$pred()
+linreg$coef()
+linreg$summary()
 
+```
+
+## Calling plot method :
+
+```{r plot_method,eval=TRUE}
+linreg$plot()
 ```
